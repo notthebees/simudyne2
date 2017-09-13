@@ -6,7 +6,7 @@ import java.util.List;
 public class Simulation {
 
     private List<Result> results = new ArrayList<>();
-    public Simulation(List<Agent> agents) {
+    public Simulation(List<Agent> agents, ResultsCalculator resultProcessor) {
 
     }
 

@@ -12,7 +12,7 @@ public class SimulationTest {
 
     @Test
     public void outputsResultsForEachIterationPlusInitialResults() throws Exception {
-        Simulation simulation = new Simulation(new ArrayList<>());
+        Simulation simulation = new Simulation(new ArrayList<>(), new ResultsCalculator());
 
         List<Result> results = simulation.run(13);
 
