@@ -6,15 +6,18 @@ import java.util.List;
 public class Simulation {
 
     private final List<Result> results = new ArrayList<>();
+    private final List<Agent> agents;
+    private final ResultsCalculator resultsCalculator;
 
-    public Simulation(List<Agent> agents, FunctionalResultsCalculator resultProcessor) {
-
+    public Simulation(List<Agent> agents, ResultsCalculator resultsCalculator) {
+        this.agents = agents;
+        this.resultsCalculator = resultsCalculator;
     }
 
     public List<Result> run(int numIterations) {
-        results.add(new Result(0, 0, 0, 0, 0));
+        results.add(resultsCalculator.calculateResults(agents));
         for (int i = 0; i < numIterations; i++) {
-            results.add(new Result(0, 0, 0, 0, 0));
+            results.add(resultsCalculator.calculateResults(agents));
         }
         return new ArrayList<>(results);
     }
