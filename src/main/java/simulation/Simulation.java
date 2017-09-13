@@ -4,11 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Simulation {
+
+    private List<Result> results = new ArrayList<>();
     public Simulation(List<Agent> agents) {
 
     }
 
     public List<Result> run(int numIterations) {
-        return new ArrayList<>();
+        results.add(new Result());
+        for (int i = 0; i < numIterations; i++) {
+            results.add(new Result());
+        }
+        return new ArrayList<>(results);
     }
 }
