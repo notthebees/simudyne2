@@ -10,7 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static simulation.AgentType.C;
 import static simulation.AgentType.NC;
 
-public class ResultsCalculatorTest {
+public class FunctionalResultsCalculatorTest {
 
     @Test
     public void calculatesNumberOfCAgentsAndNCAgents() throws Exception {
@@ -19,7 +19,7 @@ public class ResultsCalculatorTest {
         agents.add(new Agent(NC));
         agents.add(new Agent(NC));
 
-        ResultsCalculator calculator = new ResultsCalculator();
+        FunctionalResultsCalculator calculator = new FunctionalResultsCalculator();
         Result result = calculator.calculateResults(agents);
 
         assertThat(result.breedCAgents, equalTo(1));

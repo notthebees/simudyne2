@@ -7,7 +7,7 @@ public class Simulation {
 
     private final List<Result> results = new ArrayList<>();
 
-    public Simulation(List<Agent> agents, ResultsCalculator resultProcessor) {
+    public Simulation(List<Agent> agents, FunctionalResultsCalculator resultProcessor) {
 
     }
 

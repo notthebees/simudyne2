@@ -15,7 +15,7 @@ public class SimulationIntegrationTest {
         DataParser parser = new DataParser();
         List<Agent> agents = parser.parse(fileName);
 
-        Simulation simulation = new Simulation(agents, new ResultsCalculator());
+        Simulation simulation = new Simulation(agents, new FunctionalResultsCalculator());
         List<Result> results = simulation.run(0);
         assertThat(results.size(), equalTo(1));
 
