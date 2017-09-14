@@ -12,6 +12,8 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
+import static simulation.Breed.C;
+import static simulation.Breed.NC;
 
 public class SimulationTest {
     @Rule
@@ -20,14 +22,36 @@ public class SimulationTest {
     @Mock
     private ResultsCalculator resultsCalculator;
 
+    @Mock
+    private AgentUpdater updater;
+
+    @Test
+    public void appliesUpdaterToAgentsOnEachIteration() throws Exception {
+        final List<Agent> agents = new ArrayList<>();
+        Agent agent1 = new Agent(C);
+        Agent agent2 = new Agent(NC);
+        agents.add(agent1);
+        agents.add(agent2);
+        Simulation simulation = new Simulation(agents, resultsCalculator, updater);
+
+        context.checking(new Expectations() {{
+            oneOf(updater).update(agent1, 1);
+            oneOf(updater).update(agent2, 1);
+            ignoring(resultsCalculator);
+        }});
+
+        simulation.run(1);
+    }
+
     @Test
     public void getsResultsFromResultsCalculator() {
-        final ArrayList<Agent> agents = new ArrayList<>();
-        Simulation simulation = new Simulation(agents, resultsCalculator, null);
+        final List<Agent> agents = new ArrayList<>();
+        Simulation simulation = new Simulation(agents, resultsCalculator, updater);
 
         Result result = new Result(42, 42, 42, 42, 42);
         context.checking(new Expectations() {{
             oneOf(resultsCalculator).calculateResults(agents); will(returnValue(result));
+            ignoring(updater);
         }});
 
         List<Result> results = simulation.run(0);
@@ -36,10 +60,12 @@ public class SimulationTest {
 
     @Test
     public void outputsResultsForEachIterationPlusInitialResults() {
-        Simulation simulation = new Simulation(new ArrayList<>(), new FunctionalResultsCalculator(), null);
+        Simulation simulation = new Simulation(
+                new ArrayList<>(),
+                new FunctionalResultsCalculator(),
+                new BreedUpdater(null));
 
         List<Result> results = simulation.run(13);
-
         assertThat(results.size(), equalTo(14));
     }
 }
