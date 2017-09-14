@@ -1,5 +1,5 @@
 package simulation;
 
-public enum AgentType {
+public enum Breed {
     NC, C
 }

@@ -11,8 +11,8 @@ import java.io.Reader;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static simulation.AgentType.C;
-import static simulation.AgentType.NC;
+import static simulation.Breed.C;
+import static simulation.Breed.NC;
 
 public class DataParser {
     public List<Agent> parse(File file) throws IOException {

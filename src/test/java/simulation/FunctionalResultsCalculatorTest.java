@@ -7,8 +7,8 @@ import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static simulation.AgentType.C;
-import static simulation.AgentType.NC;
+import static simulation.Breed.C;
+import static simulation.Breed.NC;
 
 public class FunctionalResultsCalculatorTest {
 

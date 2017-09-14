@@ -1,9 +1,9 @@
 package simulation;
 
 public class Agent {
-    public final AgentType type;
+    public final Breed breed;
 
-    public Agent(AgentType type) {
-        this.type = type;
+    public Agent(Breed breed) {
+        this.breed = breed;
     }
 }
