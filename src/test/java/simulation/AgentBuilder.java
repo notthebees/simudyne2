@@ -12,8 +12,28 @@ public class AgentBuilder {
     private boolean autoRenew = false;
     private int inertiaForSwitch = 0;
 
-    public AgentBuilder with(Breed breed) {
+    public AgentBuilder withBreed(Breed breed) {
         this.breed = breed;
+        return this;
+    }
+
+    public AgentBuilder withSocialGrade(int socialGrade) {
+        this.socialGrade = socialGrade;
+        return this;
+    }
+
+    public AgentBuilder withPaymentAtPurchase(int paymentAtPurchase) {
+        this.paymentAtPurchase = paymentAtPurchase;
+        return this;
+    }
+
+    public AgentBuilder withAttributeBrand(int attributeBrand) {
+        this.attributeBrand = attributeBrand;
+        return this;
+    }
+
+    public AgentBuilder withAttributePrice(double attributePrice) {
+        this.attributePrice = attributePrice;
         return this;
     }
 
