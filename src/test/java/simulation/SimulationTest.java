@@ -23,7 +23,7 @@ public class SimulationTest {
     @Test
     public void getsResultsFromResultsCalculator() {
         final ArrayList<Agent> agents = new ArrayList<>();
-        Simulation simulation = new Simulation(agents, resultsCalculator);
+        Simulation simulation = new Simulation(agents, resultsCalculator, null);
 
         Result result = new Result(42, 42, 42, 42, 42);
         context.checking(new Expectations() {{
@@ -36,7 +36,7 @@ public class SimulationTest {
 
     @Test
     public void outputsResultsForEachIterationPlusInitialResults() {
-        Simulation simulation = new Simulation(new ArrayList<>(), new FunctionalResultsCalculator());
+        Simulation simulation = new Simulation(new ArrayList<>(), new FunctionalResultsCalculator(), null);
 
         List<Result> results = simulation.run(13);
 

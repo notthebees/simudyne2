@@ -9,7 +9,7 @@ public class Simulation {
     private final List<Agent> agents;
     private final ResultsCalculator resultsCalculator;
 
-    public Simulation(List<Agent> agents, ResultsCalculator resultsCalculator) {
+    public Simulation(List<Agent> agents, ResultsCalculator resultsCalculator, AgentUpdater updater) {
         this.agents = agents;
         this.resultsCalculator = resultsCalculator;
     }
