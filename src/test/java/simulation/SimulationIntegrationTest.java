@@ -2,6 +2,7 @@ package simulation;
 
 import org.junit.Test;
 
+import java.io.File;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -11,9 +12,9 @@ public class SimulationIntegrationTest {
 
     @Test
     public void outputResultsForInitialData() throws Exception {
-        String fileName = "test_input.csv";
+        File file = new File(getClass().getResource("/test_input.csv").getFile());
         DataParser parser = new DataParser();
-        List<Agent> agents = parser.parse(fileName);
+        List<Agent> agents = parser.parse(file);
 
         Simulation simulation = new Simulation(agents, new FunctionalResultsCalculator());
         List<Result> results = simulation.run(0);
