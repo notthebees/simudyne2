@@ -20,6 +20,42 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class SimulationIntegrationTest {
 
     @Test
+    public void outputResultsForInitialDataPlusTwoIterations() throws Exception {
+        File file = new File(getClass().getResource("/test_input.csv").getFile());
+        DataParser parser = new DataParser();
+        List<Agent> agents = parser.parse(file);
+
+        AgentUpdater updater = new BreedUpdater(new MockRandom());
+        Simulation simulation = new Simulation(agents, updater);
+        SimulationHistory history = simulation.run(2);
+
+        ResultsCalculator resultsCalculator = new FunctionalResultsCalculator();
+        List<Result> results = history.getResults(resultsCalculator);
+        assertThat(results.size(), equalTo(3));
+
+        Result result0 = results.get(0);
+        assertThat(result0.breedCAgents, equalTo(1));
+        assertThat(result0.breedNCAgents, equalTo(1));
+        assertThat(result0.breedCLost, equalTo(0));
+        assertThat(result0.breedCGained, equalTo(0));
+        assertThat(result0.breedCRegained, equalTo(0));
+
+        Result result1 = results.get(1);
+        assertThat(result1.breedCAgents, equalTo(0));
+        assertThat(result1.breedNCAgents, equalTo(2));
+        assertThat(result1.breedCLost, equalTo(1));
+        assertThat(result1.breedCGained, equalTo(0));
+        assertThat(result1.breedCRegained, equalTo(0));
+
+        Result result2 = results.get(2);
+        assertThat(result2.breedCAgents, equalTo(1));
+        assertThat(result2.breedNCAgents, equalTo(1));
+        assertThat(result2.breedCLost, equalTo(0));
+        assertThat(result2.breedCGained, equalTo(1));
+        assertThat(result2.breedCRegained, equalTo(1));
+    }
+
+    @Test
     public void outputResultsForInitialDataPlusOneIteration() throws Exception {
         File file = new File(getClass().getResource("/test_input.csv").getFile());
         DataParser parser = new DataParser();
