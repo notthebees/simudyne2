@@ -8,6 +8,8 @@ import simulation.parsing.DataParser;
 import simulation.random.MockRandom;
 import simulation.results.FunctionalResultsCalculator;
 import simulation.results.Result;
+import simulation.results.ResultsCalculator;
+import simulation.results.SimulationHistory;
 
 import java.io.File;
 import java.util.List;
@@ -24,9 +26,11 @@ public class SimulationIntegrationTest {
         List<Agent> agents = parser.parse(file);
 
         AgentUpdater updater = new BreedUpdater(new MockRandom());
-        Simulation simulation = new Simulation(agents, new FunctionalResultsCalculator(), updater);
+        ResultsCalculator resultsCalculator = new FunctionalResultsCalculator();
+        Simulation simulation = new Simulation(agents, resultsCalculator, updater);
 
-        List<Result> results = simulation.run(1);
+        SimulationHistory history = simulation.run(1);
+        List<Result> results = resultsCalculator.calculateResults(history);
         assertThat(results.size(), equalTo(2));
 
         Result result0 = results.get(0);
@@ -50,8 +54,11 @@ public class SimulationIntegrationTest {
         DataParser parser = new DataParser();
         List<Agent> agents = parser.parse(file);
 
-        Simulation simulation = new Simulation(agents, new FunctionalResultsCalculator(), null);
-        List<Result> results = simulation.run(0);
+        ResultsCalculator resultsCalculator = new FunctionalResultsCalculator();
+        Simulation simulation = new Simulation(agents, resultsCalculator, null);
+
+        SimulationHistory history = simulation.run(0);
+        List<Result> results = resultsCalculator.calculateResults(history);
         assertThat(results.size(), equalTo(1));
 
         Result result = results.get(0);

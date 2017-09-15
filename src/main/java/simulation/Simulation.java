@@ -4,6 +4,7 @@ import simulation.agent.Agent;
 import simulation.agent.AgentUpdater;
 import simulation.results.Result;
 import simulation.results.ResultsCalculator;
+import simulation.results.SimulationHistory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class Simulation {
         this.updater = updater;
     }
 
-    public List<Result> run(int numIterations) {
+    public SimulationHistory run(int numIterations) {
         results.add(resultsCalculator.calculateResults(agents));
         for (int i = 0; i < numIterations; i++) {
             final int iteration = i + 1;
@@ -32,6 +33,6 @@ public class Simulation {
                     .collect(toList());
             results.add(resultsCalculator.calculateResults(agents));
         }
-        return new ArrayList<>(results);
+        return new SimulationHistory();
     }
 }

@@ -17,4 +17,9 @@ public class FunctionalResultsCalculator implements ResultsCalculator {
 
         return new Result(breedCAgents, breedNCAgents, 0, 0, 0);
     }
+
+    @Override
+    public List<Result> calculateResults(SimulationHistory history) {
+        return null;
+    }
 }

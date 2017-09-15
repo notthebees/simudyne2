@@ -7,17 +7,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import simulation.agent.Agent;
 import simulation.agent.AgentUpdater;
-import simulation.agent.BreedUpdater;
-import simulation.results.FunctionalResultsCalculator;
-import simulation.results.Result;
 import simulation.results.ResultsCalculator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
 import static simulation.agent.Breed.C;
 import static simulation.agent.Breed.NC;
 
@@ -54,31 +48,5 @@ public class SimulationTest {
         }});
 
         simulation.run(2);
-    }
-
-    @Test
-    public void getsResultsFromResultsCalculator() {
-        final List<Agent> agents = new ArrayList<>();
-        Simulation simulation = new Simulation(agents, resultsCalculator, updater);
-
-        Result result = new Result(42, 42, 42, 42, 42);
-        context.checking(new Expectations() {{
-            oneOf(resultsCalculator).calculateResults(agents); will(returnValue(result));
-            ignoring(updater);
-        }});
-
-        List<Result> results = simulation.run(0);
-        assertThat(results, contains(result));
-    }
-
-    @Test
-    public void outputsResultsForEachIterationPlusInitialResults() {
-        Simulation simulation = new Simulation(
-                new ArrayList<>(),
-                new FunctionalResultsCalculator(),
-                new BreedUpdater(null));
-
-        List<Result> results = simulation.run(13);
-        assertThat(results.size(), equalTo(14));
     }
 }
