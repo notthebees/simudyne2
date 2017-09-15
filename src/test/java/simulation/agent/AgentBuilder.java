@@ -2,6 +2,7 @@ package simulation.agent;
 
 import static simulation.agent.Breed.C;
 
+@SuppressWarnings("WeakerAccess")
 public class AgentBuilder {
     private Breed breed = C;
     private int socialGrade = 0;
@@ -11,6 +12,8 @@ public class AgentBuilder {
     private double attributePromotions = 0;
     private boolean autoRenew = false;
     private int inertiaForSwitch = 0;
+    private boolean breedCLost;
+    private boolean breedCGained;
 
     public AgentBuilder withBreed(Breed breed) {
         this.breed = breed;
@@ -52,8 +55,18 @@ public class AgentBuilder {
         return this;
     }
 
+    public AgentBuilder withBreedCLost() {
+        this.breedCLost = true;
+        return this;
+    }
+
+    public AgentBuilder withBreedCGained() {
+        this.breedCGained = true;
+        return this;
+    }
+
     public Agent build() {
         return new Agent(breed, socialGrade, paymentAtPurchase, attributeBrand, attributePrice, attributePromotions,
-                autoRenew, inertiaForSwitch, false, false);
+                autoRenew, inertiaForSwitch, breedCLost, breedCGained);
     }
 }
