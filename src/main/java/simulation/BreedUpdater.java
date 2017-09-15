@@ -18,10 +18,8 @@ public class BreedUpdater implements AgentUpdater {
         }
 
         double rand = random.nextDouble() * 3;
-        double affinity = agent.paymentAtPurchase / agent.attributePrice + (rand * agent.attributePromotions * agent
-                .inertiaForSwitch);
         if (agent.breed.equals(C)) {
-            if (affinity < agent.socialGrade * agent.attributeBrand) {
+            if (agent.affinity(rand) < agent.socialGrade * agent.attributeBrand) {
                 return new Agent(NC, agent.socialGrade, agent.paymentAtPurchase, agent.attributeBrand, agent
                         .attributePrice, agent.attributePromotions, false, agent.inertiaForSwitch);
             }

@@ -33,4 +33,8 @@ public class Agent {
     public Agent(Breed breed) {
         this(breed, 0, 0, 0, 0, 0, false, 0);
     }
+
+    public double affinity(double rand) {
+        return paymentAtPurchase / attributePrice + (rand * attributePromotions * inertiaForSwitch);
+    }
 }
