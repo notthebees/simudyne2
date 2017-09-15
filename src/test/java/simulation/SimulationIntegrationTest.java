@@ -1,6 +1,13 @@
 package simulation;
 
 import org.junit.Test;
+import simulation.agent.Agent;
+import simulation.agent.AgentUpdater;
+import simulation.agent.BreedUpdater;
+import simulation.parsing.DataParser;
+import simulation.random.MockRandom;
+import simulation.results.FunctionalResultsCalculator;
+import simulation.results.Result;
 
 import java.io.File;
 import java.util.List;

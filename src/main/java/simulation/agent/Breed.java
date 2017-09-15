@@ -1,4 +1,4 @@
-package simulation;
+package simulation.agent;
 
 public enum Breed {
     NC, C

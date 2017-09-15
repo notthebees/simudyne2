@@ -1,4 +1,6 @@
-package simulation;
+package simulation.results;
+
+import simulation.agent.Agent;
 
 import java.util.List;
 

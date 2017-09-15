@@ -5,6 +5,12 @@ import org.jmock.auto.Mock;
 import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.Rule;
 import org.junit.Test;
+import simulation.agent.Agent;
+import simulation.agent.AgentUpdater;
+import simulation.agent.BreedUpdater;
+import simulation.results.FunctionalResultsCalculator;
+import simulation.results.Result;
+import simulation.results.ResultsCalculator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +18,8 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
-import static simulation.Breed.C;
-import static simulation.Breed.NC;
+import static simulation.agent.Breed.C;
+import static simulation.agent.Breed.NC;
 
 public class SimulationTest {
     @Rule

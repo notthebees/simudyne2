@@ -1,4 +1,4 @@
-package simulation;
+package simulation.random;
 
 public class MockRandom implements MyRandom {
 

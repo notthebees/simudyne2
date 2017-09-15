@@ -1,8 +1,9 @@
-package simulation;
+package simulation.parsing;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import simulation.agent.Agent;
 
 import java.io.File;
 import java.io.FileReader;
@@ -11,8 +12,8 @@ import java.io.Reader;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static simulation.Breed.C;
-import static simulation.Breed.NC;
+import static simulation.agent.Breed.C;
+import static simulation.agent.Breed.NC;
 
 public class DataParser {
     public List<Agent> parse(File file) throws IOException {

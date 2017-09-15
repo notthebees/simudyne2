@@ -1,4 +1,4 @@
-package simulation;
+package simulation.results;
 
 public class Result {
     public final int breedCAgents;

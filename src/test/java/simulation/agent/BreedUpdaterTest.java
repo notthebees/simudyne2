@@ -1,4 +1,4 @@
-package simulation;
+package simulation.agent;
 
 
 import org.jmock.Expectations;
@@ -6,11 +6,12 @@ import org.jmock.auto.Mock;
 import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.Rule;
 import org.junit.Test;
+import simulation.random.MyRandom;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static simulation.Breed.C;
-import static simulation.Breed.NC;
+import static simulation.agent.Breed.C;
+import static simulation.agent.Breed.NC;
 
 public class BreedUpdaterTest {
     @Rule

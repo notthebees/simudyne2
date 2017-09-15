@@ -1,6 +1,8 @@
-package simulation;
+package simulation.agent;
 
-import static simulation.Breed.C;
+import simulation.random.MyRandom;
+
+import static simulation.agent.Breed.C;
 
 public class BreedUpdater implements AgentUpdater {
 

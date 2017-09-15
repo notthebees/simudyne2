@@ -1,6 +1,6 @@
-package simulation;
+package simulation.agent;
 
-import static simulation.Breed.C;
+import static simulation.agent.Breed.C;
 
 public class AgentBuilder {
     private Breed breed = C;

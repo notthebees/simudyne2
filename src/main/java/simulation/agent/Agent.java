@@ -1,7 +1,7 @@
-package simulation;
+package simulation.agent;
 
-import static simulation.Breed.C;
-import static simulation.Breed.NC;
+import static simulation.agent.Breed.C;
+import static simulation.agent.Breed.NC;
 
 public class Agent {
     public final Breed breed;

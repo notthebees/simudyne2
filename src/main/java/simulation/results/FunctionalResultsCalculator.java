@@ -1,8 +1,10 @@
-package simulation;
+package simulation.results;
+
+import simulation.agent.Agent;
 
 import java.util.List;
 
-import static simulation.Breed.C;
+import static simulation.agent.Breed.C;
 
 public class FunctionalResultsCalculator implements ResultsCalculator {
 

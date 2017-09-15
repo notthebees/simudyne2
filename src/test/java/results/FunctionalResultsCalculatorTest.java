@@ -1,14 +1,17 @@
-package simulation;
+package results;
 
 import org.junit.Test;
+import simulation.agent.Agent;
+import simulation.results.FunctionalResultsCalculator;
+import simulation.results.Result;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static simulation.Breed.C;
-import static simulation.Breed.NC;
+import static simulation.agent.Breed.C;
+import static simulation.agent.Breed.NC;
 
 public class FunctionalResultsCalculatorTest {
 

@@ -1,14 +1,15 @@
-package simulation;
+package simulation.parsing;
 
 import org.junit.Test;
+import simulation.agent.Agent;
 
 import java.io.File;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static simulation.Breed.C;
-import static simulation.Breed.NC;
+import static simulation.agent.Breed.C;
+import static simulation.agent.Breed.NC;
 
 public class DataParserTest {
 
