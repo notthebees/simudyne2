@@ -27,7 +27,7 @@ public class AgentBuilder {
         return this;
     }
 
-    public AgentBuilder withAttributeBrand(int attributeBrand) {
+    public AgentBuilder withAttributeBrand(double attributeBrand) {
         this.attributeBrand = attributeBrand;
         return this;
     }
@@ -37,13 +37,23 @@ public class AgentBuilder {
         return this;
     }
 
+    public AgentBuilder withAttributePromotions(double attributePromotions) {
+        this.attributePromotions = attributePromotions;
+        return this;
+    }
+
     public AgentBuilder withAutoRenew() {
         this.autoRenew = true;
         return this;
     }
 
+    public AgentBuilder withInertiaForSwitch(int inertiaForSwitch) {
+        this.inertiaForSwitch = inertiaForSwitch;
+        return this;
+    }
+
     public Agent build() {
         return new Agent(breed, socialGrade, paymentAtPurchase, attributeBrand, attributePrice, attributePromotions,
-                autoRenew, inertiaForSwitch);
+                autoRenew, inertiaForSwitch, false, false);
     }
 }

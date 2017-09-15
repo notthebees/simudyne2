@@ -12,6 +12,8 @@ public class Agent {
     public final double attributePromotions;
     public final boolean autoRenew;
     public final int inertiaForSwitch;
+    public final boolean breedCLost;
+    public final boolean breedCGained;
 
     public Agent(
             Breed breed,
@@ -21,7 +23,9 @@ public class Agent {
             double attributePrice,
             double attributePromotions,
             boolean autoRenew,
-            int inertiaForSwitch)
+            int inertiaForSwitch,
+            boolean breedCLost,
+            boolean breedCGained)
     {
         this.breed = breed;
         this.socialGrade = socialGrade;
@@ -31,10 +35,12 @@ public class Agent {
         this.attributePromotions = attributePromotions;
         this.autoRenew = autoRenew;
         this.inertiaForSwitch = inertiaForSwitch;
+        this.breedCLost = breedCLost;
+        this.breedCGained = breedCGained;
     }
 
     public Agent(Breed breed) {
-        this(breed, 0, 0, 0, 0, 0, false, 0);
+        this(breed, 0, 0, 0, 0, 0, false, 0, false, false);
     }
 
     public double affinity(double rand) {
@@ -42,8 +48,14 @@ public class Agent {
     }
 
     public Agent switchBreed() {
-        Breed newBreed = breed.equals(C) ? NC : C;
-        return new Agent(newBreed, socialGrade, paymentAtPurchase, attributeBrand, attributePrice, attributePromotions,
-                false, inertiaForSwitch);
+        if (breed.equals(C)) {
+            return new Agent(NC, socialGrade, paymentAtPurchase, attributeBrand, attributePrice, attributePromotions,
+
+                    false, inertiaForSwitch, true, false);
+        } else {
+            return new Agent(C, socialGrade, paymentAtPurchase, attributeBrand, attributePrice, attributePromotions,
+
+                    false, inertiaForSwitch, false, true);
+        }
     }
 }

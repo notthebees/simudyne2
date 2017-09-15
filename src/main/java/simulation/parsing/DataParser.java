@@ -35,7 +35,7 @@ public class DataParser {
                     int inertiaForSwitch = parseInt(record.get(9));
 
                     return new Agent(breed, socialGrade, paymentAtPurchase, attributeBrand, attributePrice,
-                            attributePromotions, autoRenew, inertiaForSwitch);
+                            attributePromotions, autoRenew, inertiaForSwitch, false, false);
                 })
                 .collect(Collectors.toList());
     }
