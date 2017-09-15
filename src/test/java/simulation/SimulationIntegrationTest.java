@@ -36,7 +36,7 @@ public class SimulationIntegrationTest {
         assertThat(result0.breedCGained, equalTo(0));
         assertThat(result0.breedCRegained, equalTo(0));
 
-        Result result1 = results.get(0);
+        Result result1 = results.get(1);
         assertThat(result1.breedCAgents, equalTo(0));
         assertThat(result1.breedNCAgents, equalTo(2));
         assertThat(result1.breedCLost, equalTo(1));
