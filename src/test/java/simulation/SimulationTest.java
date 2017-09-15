@@ -7,7 +7,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import simulation.agent.Agent;
 import simulation.agent.AgentUpdater;
-import simulation.results.ResultsCalculator;
 import simulation.results.SimulationHistory;
 
 import java.util.ArrayList;
@@ -23,9 +22,6 @@ public class SimulationTest {
     public JUnitRuleMockery context = new JUnitRuleMockery();
 
     @Mock
-    private ResultsCalculator resultsCalculator;
-
-    @Mock
     private AgentUpdater updater;
 
     @Test
@@ -38,7 +34,7 @@ public class SimulationTest {
         final List<Agent> agents = new ArrayList<>();
         agents.add(agent1);
         agents.add(agent2);
-        Simulation simulation = new Simulation(agents, resultsCalculator, updater);
+        Simulation simulation = new Simulation(agents, updater);
 
         context.checking(new Expectations() {{
             oneOf(updater).update(agent1, 1); will(returnValue(updatedAgent1));
@@ -46,8 +42,6 @@ public class SimulationTest {
 
             oneOf(updater).update(updatedAgent1, 2); will(returnValue(updatedAgent1));
             oneOf(updater).update(updatedAgent2, 2); will(returnValue(updatedAgent2));
-
-            ignoring(resultsCalculator);
         }});
 
         SimulationHistory history = simulation.run(2);
