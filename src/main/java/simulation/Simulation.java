@@ -25,14 +25,17 @@ public class Simulation {
     }
 
     public SimulationHistory run(int numIterations) {
+        SimulationHistory history = new SimulationHistory();
         results.add(resultsCalculator.calculateResults(agents));
+        history.add(agents);
         for (int i = 0; i < numIterations; i++) {
             final int iteration = i + 1;
             agents = agents.stream()
                     .map(agent -> updater.update(agent, iteration))
                     .collect(toList());
             results.add(resultsCalculator.calculateResults(agents));
+            history.add(agents);
         }
-        return new SimulationHistory();
+        return history;
     }
 }
