@@ -47,25 +47,4 @@ public class SimulationIntegrationTest {
         assertThat(result1.breedCGained, equalTo(0));
         assertThat(result1.breedCRegained, equalTo(0));
     }
-
-    @Test
-    public void outputResultsForInitialData() throws Exception {
-        File file = new File(getClass().getResource("/test_input.csv").getFile());
-        DataParser parser = new DataParser();
-        List<Agent> agents = parser.parse(file);
-
-        Simulation simulation = new Simulation(agents, null);
-        SimulationHistory history = simulation.run(0);
-
-        ResultsCalculator resultsCalculator = new FunctionalResultsCalculator();
-        List<Result> results = history.getResults(resultsCalculator);
-        assertThat(results.size(), equalTo(1));
-
-        Result result = results.get(0);
-        assertThat(result.breedCAgents, equalTo(1));
-        assertThat(result.breedNCAgents, equalTo(1));
-        assertThat(result.breedCLost, equalTo(0));
-        assertThat(result.breedCGained, equalTo(0));
-        assertThat(result.breedCRegained, equalTo(0));
-    }
 }
