@@ -46,7 +46,12 @@ public class Agent {
         this(breed, 0, 0, 0, 0, 0, false, 0, false, false, false);
     }
 
-    public double affinity(double rand) {
+    public boolean toSwitch(double rand, double brandFactor) {
+        return !autoRenew && (breed.equals(C) && affinity(rand) < socialGrade * attributeBrand) ||
+                breed.equals(NC) && affinity(rand) < socialGrade * attributeBrand * brandFactor;
+    }
+
+    private double affinity(double rand) {
         return paymentAtPurchase / attributePrice + (rand * attributePromotions * inertiaForSwitch);
     }
 
