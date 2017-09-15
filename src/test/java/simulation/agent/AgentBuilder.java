@@ -67,6 +67,6 @@ public class AgentBuilder {
 
     public Agent build() {
         return new Agent(breed, socialGrade, paymentAtPurchase, attributeBrand, attributePrice, attributePromotions,
-                autoRenew, inertiaForSwitch, breedCLost, breedCGained);
+                autoRenew, inertiaForSwitch, breedCLost, breedCGained, false);
     }
 }

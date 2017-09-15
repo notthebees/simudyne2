@@ -10,21 +10,33 @@ import static simulation.agent.Breed.NC;
 public class AgentTest {
 
     @Test
-    public void setsBreedCGainedFlagWhenSwitchingFromNCToC() {
-        Agent agent = agent().withBreed(NC).build();
+    public void setsBreedCRegainedWhenSwitchingFromNCToCAfterBreedCLostPreviously() {
+        Agent agent = agent().withBreed(NC).withBreedCLost().build();
 
         Agent updatedAgent = agent.switchBreed();
+        assertThat(updatedAgent.breedCRegained, equalTo(true));
         assertThat(updatedAgent.breedCGained, equalTo(true));
         assertThat(updatedAgent.breedCLost, equalTo(false));
     }
 
     @Test
-    public void setsBreedCLostFlagWhenSwitchingFromCToNC() {
+    public void setsBreedCGainedWhenSwitchingFromNCToC() {
+        Agent agent = agent().withBreed(NC).build();
+
+        Agent updatedAgent = agent.switchBreed();
+        assertThat(updatedAgent.breedCGained, equalTo(true));
+        assertThat(updatedAgent.breedCLost, equalTo(false));
+        assertThat(updatedAgent.breedCRegained, equalTo(false));
+    }
+
+    @Test
+    public void setsBreedCLostWhenSwitchingFromCToNC() {
         Agent agent = agent().withBreed(C).build();
 
         Agent updatedAgent = agent.switchBreed();
         assertThat(updatedAgent.breedCLost, equalTo(true));
         assertThat(updatedAgent.breedCGained, equalTo(false));
+        assertThat(updatedAgent.breedCRegained, equalTo(false));
     }
 
     @Test
