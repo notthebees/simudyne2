@@ -21,7 +21,10 @@ public class FunctionalResultsCalculator implements ResultsCalculator {
         int breedCGained = (int) agents.stream()
                 .filter(agent -> agent.breedCGained)
                 .count();
+        int breedCRegained = (int) agents.stream()
+                .filter(agent -> agent.breedCRegained)
+                .count();
 
-        return new Result(breedCAgents, breedNCAgents, breedCLost, breedCGained, 0);
+        return new Result(breedCAgents, breedNCAgents, breedCLost, breedCGained, breedCRegained);
     }
 }
