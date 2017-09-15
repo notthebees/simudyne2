@@ -1,5 +1,8 @@
 package simulation;
 
+import static simulation.Breed.C;
+import static simulation.Breed.NC;
+
 public class Agent {
     public final Breed breed;
     public final int socialGrade;
@@ -36,5 +39,11 @@ public class Agent {
 
     public double affinity(double rand) {
         return paymentAtPurchase / attributePrice + (rand * attributePromotions * inertiaForSwitch);
+    }
+
+    public Agent switchBreed() {
+        Breed newBreed = breed.equals(C) ? NC : C;
+        return new Agent(newBreed, socialGrade, paymentAtPurchase, attributeBrand, attributePrice, attributePromotions,
+                false, inertiaForSwitch);
     }
 }

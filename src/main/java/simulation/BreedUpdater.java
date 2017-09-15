@@ -1,7 +1,6 @@
 package simulation;
 
 import static simulation.Breed.C;
-import static simulation.Breed.NC;
 
 public class BreedUpdater implements AgentUpdater {
 
@@ -20,8 +19,7 @@ public class BreedUpdater implements AgentUpdater {
         double rand = random.nextDouble() * 3;
         if (agent.breed.equals(C)) {
             if (agent.affinity(rand) < agent.socialGrade * agent.attributeBrand) {
-                return new Agent(NC, agent.socialGrade, agent.paymentAtPurchase, agent.attributeBrand, agent
-                        .attributePrice, agent.attributePromotions, false, agent.inertiaForSwitch);
+                return agent.switchBreed();
             }
         }
 
