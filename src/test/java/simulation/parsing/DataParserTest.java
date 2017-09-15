@@ -16,7 +16,7 @@ public class DataParserTest {
     @Test
     public void parsesListOfAgents() throws Exception {
         DataParser parser = new DataParser();
-        File file = new File(getClass().getResource("/test_input.csv").getFile());
+        File file = new File(getClass().getResource("/input_with_auto_renew_agent.csv").getFile());
 
         List<Agent> agents = parser.parse(file);
         assertThat(agents.size(), equalTo(2));
@@ -36,7 +36,7 @@ public class DataParserTest {
         assertThat(agents.get(1).attributeBrand, equalTo(12.8));
         assertThat(agents.get(1).attributePrice, equalTo(24.0));
         assertThat(agents.get(1).attributePromotions, equalTo(2.8));
-        assertThat(agents.get(1).autoRenew, equalTo(false));
+        assertThat(agents.get(1).autoRenew, equalTo(true));
         assertThat(agents.get(1).inertiaForSwitch, equalTo(10));
     }
 }
