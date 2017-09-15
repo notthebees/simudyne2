@@ -2,6 +2,7 @@ package simulation.results;
 
 import simulation.agent.Agent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static simulation.agent.Breed.C;
@@ -20,6 +21,8 @@ public class FunctionalResultsCalculator implements ResultsCalculator {
 
     @Override
     public List<Result> calculateResults(SimulationHistory history) {
-        return null;
+        List<Result> results = new ArrayList<>();
+        results.add(calculateResults(history.get(0)));
+        return results;
     }
 }
