@@ -13,9 +13,7 @@ public class BreedUpdater implements AgentUpdater {
 
     @Override
     public Agent update(Agent agent, int iteration) {
-        if (agent.toSwitch(random.nextDouble() * 3, BrandFactor.calculate(iteration))) {
-            return agent.switchBreed();
-        }
-        return agent;
+        boolean toSwitch = agent.toSwitch(random.nextDouble() * 3, BrandFactor.calculate(iteration));
+        return agent.update(toSwitch);
     }
 }

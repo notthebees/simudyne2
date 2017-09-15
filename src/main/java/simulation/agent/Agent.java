@@ -47,25 +47,34 @@ public class Agent {
     }
 
     public boolean toSwitch(double rand, double brandFactor) {
-        return !autoRenew && (breed.equals(C) && affinity(rand) < socialGrade * attributeBrand) ||
-                breed.equals(NC) && affinity(rand) < socialGrade * attributeBrand * brandFactor;
+        double affinity = affinity(rand);
+        return !autoRenew &&
+                breed.equals(C) && affinity < socialGrade * attributeBrand ||
+                breed.equals(NC) && affinity < socialGrade * attributeBrand * brandFactor;
     }
 
     private double affinity(double rand) {
         return paymentAtPurchase / attributePrice + (rand * attributePromotions * inertiaForSwitch);
     }
 
-    public Agent switchBreed() {
+    public Agent update(boolean toSwitch) {
+        if (toSwitch) {
+            return switchBreed();
+        }
+        return this;
+    }
+
+    private Agent switchBreed() {
         if (breed.equals(C)) {
-            return new Agent(NC, socialGrade, paymentAtPurchase, attributeBrand, attributePrice, attributePromotions,
-                    false, inertiaForSwitch, true, false, false);
+            return new Agent(NC, socialGrade, paymentAtPurchase, attributeBrand, attributePrice,
+                    attributePromotions, false, inertiaForSwitch, true, false, false);
         } else {
             if (breedCLost) {
-                return new Agent(C, socialGrade, paymentAtPurchase, attributeBrand, attributePrice, attributePromotions,
-                        false, inertiaForSwitch, false, true, true);
+                return new Agent(C, socialGrade, paymentAtPurchase, attributeBrand, attributePrice,
+                        attributePromotions, false, inertiaForSwitch, false, true, true);
             } else {
-                return new Agent(C, socialGrade, paymentAtPurchase, attributeBrand, attributePrice, attributePromotions,
-                        false, inertiaForSwitch, false, true, false);
+                return new Agent(C, socialGrade, paymentAtPurchase, attributeBrand, attributePrice,
+                        attributePromotions, false, inertiaForSwitch, false, true, false);
             }
         }
     }

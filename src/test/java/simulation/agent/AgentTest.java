@@ -13,7 +13,7 @@ public class AgentTest {
     public void setsBreedCRegainedWhenSwitchingFromNCToCAfterBreedCLostPreviously() {
         Agent agent = agent().withBreed(NC).withBreedCLost().build();
 
-        Agent updatedAgent = agent.switchBreed();
+        Agent updatedAgent = agent.update(true);
         assertThat(updatedAgent.breedCRegained, equalTo(true));
         assertThat(updatedAgent.breedCGained, equalTo(true));
         assertThat(updatedAgent.breedCLost, equalTo(false));
@@ -23,7 +23,7 @@ public class AgentTest {
     public void setsBreedCGainedWhenSwitchingFromNCToC() {
         Agent agent = agent().withBreed(NC).build();
 
-        Agent updatedAgent = agent.switchBreed();
+        Agent updatedAgent = agent.update(true);
         assertThat(updatedAgent.breedCGained, equalTo(true));
         assertThat(updatedAgent.breedCLost, equalTo(false));
         assertThat(updatedAgent.breedCRegained, equalTo(false));
@@ -33,7 +33,7 @@ public class AgentTest {
     public void setsBreedCLostWhenSwitchingFromCToNC() {
         Agent agent = agent().withBreed(C).build();
 
-        Agent updatedAgent = agent.switchBreed();
+        Agent updatedAgent = agent.update(true);
         assertThat(updatedAgent.breedCLost, equalTo(true));
         assertThat(updatedAgent.breedCGained, equalTo(false));
         assertThat(updatedAgent.breedCRegained, equalTo(false));
@@ -57,7 +57,7 @@ public class AgentTest {
                 .withInertiaForSwitch(inertiaForSwitch)
                 .build();
 
-        Agent updatedAgent = agent.switchBreed();
+        Agent updatedAgent = agent.update(true);
         assertThat(updatedAgent.breed, equalTo(NC));
         assertThat(updatedAgent.socialGrade, equalTo(socialGrade));
         assertThat(updatedAgent.paymentAtPurchase, equalTo(paymentAtPurchase));
@@ -67,7 +67,7 @@ public class AgentTest {
         assertThat(updatedAgent.autoRenew, equalTo(false));
         assertThat(updatedAgent.inertiaForSwitch, equalTo(inertiaForSwitch));
 
-        Agent reUpdatedAgent = updatedAgent.switchBreed();
+        Agent reUpdatedAgent = updatedAgent.update(true);
         assertThat(reUpdatedAgent.breed, equalTo(C));
         assertThat(reUpdatedAgent.socialGrade, equalTo(socialGrade));
         assertThat(reUpdatedAgent.paymentAtPurchase, equalTo(paymentAtPurchase));
