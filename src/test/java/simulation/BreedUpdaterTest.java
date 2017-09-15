@@ -20,6 +20,25 @@ public class BreedUpdaterTest {
     private MyRandom random;
 
     @Test
+    public void switchesBreedToCWhenAffinityBelowThreshold() {
+        BreedUpdater updater = new BreedUpdater(random);
+
+        Agent agent = agent()
+                .withBreed(NC)
+                .withSocialGrade(1)
+                .withPaymentAtPurchase(0)
+                .withAttributeBrand(1)
+                .withAttributePrice(1).build();
+
+        context.checking(new Expectations() {{
+            oneOf(random).nextDouble(); will(returnValue(0.0));
+        }});
+
+        Agent updatedAgent = updater.update(agent, 42);
+        assertThat(updatedAgent.breed, equalTo(C));
+    }
+
+    @Test
     public void switchesBreedToNCWhenAffinityBelowThreshold() {
         BreedUpdater updater = new BreedUpdater(random);
 

@@ -21,8 +21,16 @@ public class BreedUpdater implements AgentUpdater {
             if (agent.affinity(rand) < agent.socialGrade * agent.attributeBrand) {
                 return agent.switchBreed();
             }
+        } else {
+            if (agent.affinity(rand) < agent.socialGrade * agent.attributeBrand * brandFactor(iteration)) {
+                return agent.switchBreed();
+            }
         }
 
         return agent;
+    }
+
+    private double brandFactor(int iteration) {
+        return 0.1 + (iteration - 1) / 5;
     }
 }
