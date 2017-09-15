@@ -1,10 +1,7 @@
-package results;
+package simulation.results;
 
 import org.junit.Test;
 import simulation.agent.Agent;
-import simulation.results.FunctionalResultsCalculator;
-import simulation.results.Result;
-import simulation.results.SimulationHistory;
 
 import java.util.ArrayList;
 import java.util.List;
