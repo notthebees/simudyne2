@@ -2,7 +2,6 @@ package simulation.results;
 
 import simulation.agent.Agent;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static simulation.agent.Breed.C;
@@ -17,12 +16,5 @@ public class FunctionalResultsCalculator implements ResultsCalculator {
         int breedNCAgents = agents.size() - breedCAgents;
 
         return new Result(breedCAgents, breedNCAgents, 0, 0, 0);
-    }
-
-    @Override
-    public List<Result> calculateResults(SimulationHistory history) {
-        List<Result> results = new ArrayList<>();
-        results.add(calculateResults(history.get(0)));
-        return results;
     }
 }

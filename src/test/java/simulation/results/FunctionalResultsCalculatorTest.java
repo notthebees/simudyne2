@@ -14,7 +14,7 @@ import static simulation.agent.Breed.NC;
 public class FunctionalResultsCalculatorTest {
 
     @Test
-    public void calculatesNumberOfCAgentsAndNCAgentsForSingleIterationInSimulationHistory() {
+    public void calculatesNumberOfCAgentsAndNCAgents() {
         List<Agent> agents = new ArrayList<>();
         agents.add(new Agent(C));
         agents.add(new Agent(NC));
@@ -24,8 +24,7 @@ public class FunctionalResultsCalculatorTest {
         history.add(agents);
 
         FunctionalResultsCalculator calculator = new FunctionalResultsCalculator();
-        List<Result> results = calculator.calculateResults(history);
-        Result result = results.get(0);
+        Result result = calculator.calculateResults(agents);
 
         assertThat(result.breedCAgents, equalTo(1));
         assertThat(result.breedNCAgents, equalTo(2));
