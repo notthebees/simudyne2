@@ -30,7 +30,7 @@ public class SimulationIntegrationTest {
         SimulationHistory history = simulation.run(1);
 
         ResultsCalculator resultsCalculator = new FunctionalResultsCalculator();
-        List<Result> results = resultsCalculator.calculateResults(history);
+        List<Result> results = history.getResults(resultsCalculator);
         assertThat(results.size(), equalTo(2));
 
         Result result0 = results.get(0);
@@ -58,7 +58,7 @@ public class SimulationIntegrationTest {
         SimulationHistory history = simulation.run(0);
 
         ResultsCalculator resultsCalculator = new FunctionalResultsCalculator();
-        List<Result> results = resultsCalculator.calculateResults(history);
+        List<Result> results = history.getResults(resultsCalculator);
         assertThat(results.size(), equalTo(1));
 
         Result result = results.get(0);
