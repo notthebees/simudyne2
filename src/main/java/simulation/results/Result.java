@@ -14,4 +14,13 @@ public class Result {
         this.breedCGained = breedCGained;
         this.breedCRegained = breedCRegained;
     }
+
+    @Override
+    public String toString() {
+        return "Breed C Agents: " + breedCAgents + "\n" +
+                "Breed NC Agents: " + breedNCAgents + "\n" +
+                "Breed C Lost: " + breedCLost + "\n" +
+                "Breed C Gained: " + breedCGained + "\n" +
+                "Breed C Regained: " + breedCRegained + "\n";
+    }
 }
