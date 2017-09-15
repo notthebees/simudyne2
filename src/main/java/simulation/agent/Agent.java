@@ -61,20 +61,21 @@ public class Agent {
         if (toSwitch) {
             return switchBreed();
         }
-        return this;
+        return new Agent(breed, socialGrade, paymentAtPurchase, attributeBrand, attributePrice, attributePromotions,
+                autoRenew, inertiaForSwitch, false, false, false);
     }
 
     private Agent switchBreed() {
         if (breed.equals(C)) {
-            return new Agent(NC, socialGrade, paymentAtPurchase, attributeBrand, attributePrice,
-                    attributePromotions, false, inertiaForSwitch, true, false, false);
+            return new Agent(NC, socialGrade, paymentAtPurchase, attributeBrand, attributePrice, attributePromotions,
+                    autoRenew, inertiaForSwitch, true, false, false);
         } else {
             if (breedCLost) {
                 return new Agent(C, socialGrade, paymentAtPurchase, attributeBrand, attributePrice,
-                        attributePromotions, false, inertiaForSwitch, false, true, true);
+                        attributePromotions, autoRenew, inertiaForSwitch, false, true, true);
             } else {
-                return new Agent(C, socialGrade, paymentAtPurchase, attributeBrand, attributePrice,
-                        attributePromotions, false, inertiaForSwitch, false, true, false);
+                return new Agent(C, socialGrade, paymentAtPurchase, attributeBrand, attributePrice, attributePromotions,
+                        autoRenew, inertiaForSwitch, false, true, false);
             }
         }
     }

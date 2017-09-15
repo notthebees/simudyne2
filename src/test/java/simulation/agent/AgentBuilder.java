@@ -14,6 +14,7 @@ public class AgentBuilder {
     private int inertiaForSwitch = 0;
     private boolean breedCLost;
     private boolean breedCGained;
+    private boolean breedCRegained;
 
     public AgentBuilder withBreed(Breed breed) {
         this.breed = breed;
@@ -56,17 +57,22 @@ public class AgentBuilder {
     }
 
     public AgentBuilder withBreedCLost() {
-        this.breedCLost = true;
+        breedCLost = true;
         return this;
     }
 
     public AgentBuilder withBreedCGained() {
-        this.breedCGained = true;
+        breedCGained = true;
+        return this;
+    }
+
+    public AgentBuilder withBreedCRegained() {
+        breedCRegained = true;
         return this;
     }
 
     public Agent build() {
         return new Agent(breed, socialGrade, paymentAtPurchase, attributeBrand, attributePrice, attributePromotions,
-                autoRenew, inertiaForSwitch, breedCLost, breedCGained, false);
+                autoRenew, inertiaForSwitch, breedCLost, breedCGained, breedCRegained);
     }
 }

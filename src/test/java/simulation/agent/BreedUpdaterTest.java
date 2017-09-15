@@ -61,16 +61,4 @@ public class BreedUpdaterTest {
     private AgentBuilder agent() {
         return new AgentBuilder();
     }
-
-    @Test
-    public void doesNotUpdateIfAutoRenewTrue() {
-        BreedUpdater updater = new BreedUpdater(random);
-        Agent agent = agent().withAutoRenew().build();
-
-        context.checking(new Expectations() {{
-            ignoring(random);
-        }});
-
-        assertThat(updater.update(agent, 42), equalTo(agent));
-    }
 }

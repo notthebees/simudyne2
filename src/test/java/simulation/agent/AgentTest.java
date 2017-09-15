@@ -10,6 +10,25 @@ import static simulation.agent.Breed.NC;
 public class AgentTest {
 
     @Test
+    public void doesNotUpdateIfAutoRenewTrue() {
+        Agent agent = agent().withAutoRenew().build();
+        assertThat(agent.toSwitch(42, 42), equalTo(false));
+    }
+
+    @Test
+    public void setsLostGainedAndRegainedToFalseIfNoSwitch() {
+        Agent agent = agent()
+                .withBreedCLost()
+                .withBreedCGained()
+                .withBreedCRegained().build();
+
+        Agent updatedAgent = agent.update(false);
+        assertThat(updatedAgent.breedCLost, equalTo(false));
+        assertThat(updatedAgent.breedCGained, equalTo(false));
+        assertThat(updatedAgent.breedCRegained, equalTo(false));
+    }
+
+    @Test
     public void setsBreedCRegainedWhenSwitchingFromNCToCAfterBreedCLostPreviously() {
         Agent agent = agent().withBreed(NC).withBreedCLost().build();
 
