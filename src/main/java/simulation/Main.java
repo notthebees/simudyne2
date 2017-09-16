@@ -12,6 +12,10 @@ import simulation.results.SimulationHistory;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -30,10 +34,19 @@ public class Main {
 
         ResultsCalculator resultsCalculator = new FunctionalResultsCalculator();
         List<Result> results = history.getResults(resultsCalculator);
+
+        List<String> lines = new ArrayList<>();
         for (int i = 0; i < results.size(); i++) {
             Result result = results.get(i);
-            System.out.println("Iteration " + Integer.toString(i));
-            System.out.println(result.toString());
+            lines.add("Iteration " + Integer.toString(i));
+            lines.add(result.toString());
+        }
+
+        try {
+            Path outputFile = Paths.get("output");
+            Files.write(outputFile, lines);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
