@@ -17,11 +17,9 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        File file = new File(Main.class.getResource("/input.csv").getFile());
-        DataParser parser = new DataParser();
         List<Agent> agents = null;
         try {
-            agents = parser.parse(file);
+            agents = new DataParser().parse(new File(args[0]));
         } catch (IOException e) {
             e.printStackTrace();
         }
